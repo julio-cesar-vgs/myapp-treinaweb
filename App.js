@@ -1,12 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import TextCounter from './TextCounter';
-import {Constants} from 'expo';
+import TodoList from './components/TodoList';
+import Form from './components/Form';
 export default class App extends React.Component {
+  state = {
+    list: [
+      { id: '1', text: 'abc' },
+      { id: '2', text: 'def' },
+      { id: '12', text: '234' },
+      { id: '13', text: '2345' },
+      { id: '4', text: '567567' },
+    ],
+  }
   render() {
+    const { state } = this;
     return (
       <View style={styles.container}>
-        <TextCounter limit={150} />
+        <Form />
+        <TodoList list={state.list} />
       </View>
     );
   }
@@ -14,9 +25,10 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingLeft:15,
-    paddingRight:15,
-    paddingTop: Constants.statusBarHeight + 5,
-    
+    flex: 1,
+
+    paddingTop: 15
+
+
   },
 });
